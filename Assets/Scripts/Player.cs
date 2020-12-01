@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameObject _root;
+    [SerializeField] private GameObject _ship;
+    [SerializeField] private GameObject _bulletPosition;
+    [SerializeField] private GameObject _laserPrefab;
+
     [SerializeField] private float _playerSpeed;
 
     private Vector2 _playerInput;
@@ -26,7 +31,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        PlayerShoot();
     }
+
 
     private void PlayerMove()
     {
@@ -37,14 +44,23 @@ public class Player : MonoBehaviour
 
         MovementLimits(_playerInput);
     }
+    private void PlayerShoot()
+    {
+        if (Input.GetButtonDown("Fire"))
+        {
+            GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+            laser.transform.position = _bulletPosition.transform.position;
+            laser.transform.parent = _root.transform;
+        }
+    }
 
     private void MovementLimits(Vector2 direction)
     {
         _min = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
         _max = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
 
-        _marginX = GetComponent<SpriteRenderer>().sprite.bounds.size.x / 2;
-        _marginY = GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2;
+        _marginX = _ship.GetComponent<SpriteRenderer>().sprite.bounds.size.x / 2;
+        _marginY = _ship.GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2;
 
         _min.x = _min.x + _marginX;
         _min.y = _min.y + _marginY;
