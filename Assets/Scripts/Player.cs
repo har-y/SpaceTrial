@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
 
     private float _horizontal;
     private float _vertical;
-
-    
+    private float _marginX;
+    private float _marginY;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,14 @@ public class Player : MonoBehaviour
     {
         _min = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
         _max = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
+
+        _marginX = GetComponent<SpriteRenderer>().sprite.bounds.size.x / 2;
+        _marginY = GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2;
+
+        _min.x = _min.x + _marginX;
+        _min.y = _min.y + _marginY;
+        _max.x = _max.x - _marginX;
+        _max.y = _max.y - _marginY;
 
         _position = transform.position;
 
