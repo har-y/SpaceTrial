@@ -18,11 +18,11 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BulletMove();
-        MovementLimits();
+        BulletMovement();
+        BulletMovementLimits();
     }
 
-    private void BulletMove()
+    private void BulletMovement()
     {
         _position = transform.position;
         _position = new Vector2(_position.x, _position.y + _bulletSpeed * Time.deltaTime);
@@ -30,7 +30,7 @@ public class PlayerBullet : MonoBehaviour
         transform.position = _position;
     }
 
-    private void MovementLimits()
+    private void BulletMovementLimits()
     {
         _max = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
 

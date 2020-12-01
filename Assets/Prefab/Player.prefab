@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2774109544138927332}
   m_Layer: 0
-  m_Name: bullet position
+  m_Name: laser position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _root: {fileID: 0}
   _ship: {fileID: 6928125897505311246}
-  _bulletPosition: {fileID: 923705450756950243}
+  _laserPosition: {fileID: 923705450756950243}
   _laserPrefab: {fileID: 7852880394251549003, guid: 52430a57d90814a4a89719c260aeadcb, type: 3}
   _playerSpeed: 10
+  _shootInterval: 0.3

@@ -6,10 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _root;
     [SerializeField] private GameObject _ship;
-    [SerializeField] private GameObject _bulletPosition;
+    [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
 
     [SerializeField] private float _playerSpeed;
+    [SerializeField] private float _shootInterval;
 
     private Vector2 _playerInput;
     private Vector2 _position;
@@ -20,41 +21,55 @@ public class Player : MonoBehaviour
     private float _vertical;
     private float _marginX;
     private float _marginY;
+    private float _nextShootInterval;
+
 
     // Start is called before the first frame update
     void Start()
     {
         _playerSpeed = 10f;
+        _shootInterval = 0.3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();
+        PlayerMovement();
         PlayerShoot();
     }
 
 
-    private void PlayerMove()
+    private void PlayerMovement()
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
         _playerInput = new Vector2(_horizontal, _vertical).normalized;
 
-        MovementLimits(_playerInput);
+        PlayerMovementLimits(_playerInput);
     }
+
+    private void LaserInstantiate()
+    {
+        GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        laser.transform.position = _laserPosition.transform.position;
+        laser.transform.parent = _root.transform;
+    }
+
     private void PlayerShoot()
     {
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButton("Fire"))
         {
-            GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
-            laser.transform.position = _bulletPosition.transform.position;
-            laser.transform.parent = _root.transform;
+            if (Time.time > _nextShootInterval)
+            {
+                _nextShootInterval = Time.time + _shootInterval;
+
+                LaserInstantiate();
+            }
         }
     }
 
-    private void MovementLimits(Vector2 direction)
+    private void PlayerMovementLimits(Vector2 direction)
     {
         _min = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
         _max = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
