@@ -19,9 +19,17 @@ public class WaveConfig : ScriptableObject
         return _enemyPrefab;
     }
 
-    public GameObject GetPathPrefab()
+    public List<Transform> GetWaypoints()
     {
-        return _enemyPrefab;
+        List<Transform> waveWaypoints = new List<Transform>();
+
+        foreach (Transform item in _pathPrefab.transform)
+        {
+            waveWaypoints.Add(item);
+        }
+
+
+        return waveWaypoints;
     }
 
     public float GetSpawnInterval()
