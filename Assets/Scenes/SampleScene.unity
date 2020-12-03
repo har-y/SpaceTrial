@@ -543,10 +543,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b0b9daf2b4cb24b9d97bccab5c6c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypoints:
+  _waypoint:
   - {fileID: 3847616759333340912}
   - {fileID: 3847616759333340911}
   - {fileID: 3847616759333340910}
+  _enemySpeed: 2
 --- !u!1 &1895917859
 GameObject:
   m_ObjectHideFlags: 0
