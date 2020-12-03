@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPath : MonoBehaviour
 {
     [SerializeField] private List<Transform> _waypoint;
+
     [SerializeField] private float _enemySpeed = 2f;
 
     private int _waypointIndex = 0;
