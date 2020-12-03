@@ -12,7 +12,7 @@ public class PlayerBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _bulletSpeed = 8f;
+        _bulletSpeed = 10f;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class PlayerBullet : MonoBehaviour
     private void BulletMovement()
     {
         _position = transform.position;
-        _position = new Vector2(_position.x, _position.y + _bulletSpeed * Time.deltaTime);
+        _position.y += _bulletSpeed * Time.deltaTime;
 
         transform.position = _position;
     }
