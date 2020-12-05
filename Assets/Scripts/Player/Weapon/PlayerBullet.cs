@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private int _bulletDamage = 100;
 
     private Vector2 _position;
     private Vector2 _max;
@@ -38,5 +39,15 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public int GetBulletDamage()
+    {
+        return _bulletDamage;
+    }
+
+    public void BulletDestroy()
+    {
+        Destroy(gameObject);
     }
 }
