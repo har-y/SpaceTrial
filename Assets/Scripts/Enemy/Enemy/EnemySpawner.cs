@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _root;
     [SerializeField] List<WaveConfig> _waveConfigs;
+    [SerializeField] private GameObject _root;
+    [SerializeField] private int _startingWave = 0;
 
     private WaveConfig _currentWave;
-
-    private int _startingWave = 0;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentWave = _waveConfigs[_startingWave];
-        StartCoroutine(SpawnEnemies(_currentWave));
+        StartCoroutine(SpawnWaves());
     }
 
     // Update is called once per frame
@@ -34,6 +31,16 @@ public class EnemySpawner : MonoBehaviour
             enemy.GetComponent<EnemyPath>().SetWaveConfiguration(waveConfig);
 
             yield return new WaitForSeconds(waveConfig.GetSpawnInterval());
+        }
+    }
+
+    private IEnumerator SpawnWaves()
+    {
+        for (int i = _startingWave; i < _waveConfigs.Count; i++)
+        {
+            _currentWave = _waveConfigs[i];
+
+            yield return StartCoroutine(SpawnEnemies(_currentWave));
         }
     }
 }

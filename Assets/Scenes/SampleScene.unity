@@ -460,10 +460,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04e1412a7535a44bab1655ec7ae5320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _root: {fileID: 7978294310234686259}
   _waveConfigs:
   - {fileID: 11400000, guid: e74005a208b013942bf046d06adfd9ad, type: 2}
   - {fileID: 11400000, guid: c51b1f84d54cccd40bdcad06b8df4d22, type: 2}
+  - {fileID: 11400000, guid: 942ca66fac977e14fbd0960348d7d08e, type: 2}
+  - {fileID: 11400000, guid: 89c461b5476d5f248acf50e2b4b3f83f, type: 2}
+  _root: {fileID: 7978294310234686259}
+  _startingWave: 0
 --- !u!1 &1895917859
 GameObject:
   m_ObjectHideFlags: 0

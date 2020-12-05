@@ -26,11 +26,6 @@ public class EnemyPath : MonoBehaviour
         EnemyMovement();
     }
 
-    public void SetWaveConfiguration(WaveConfig waveConfig)
-    {
-        _waveConfig = waveConfig;
-    }
-
     private void EnemyMovement()
     {
         if (_waypointIndex <= (_waypoints.Count - 1))
@@ -51,4 +46,8 @@ public class EnemyPath : MonoBehaviour
         }
     }
 
+    public void SetWaveConfiguration(WaveConfig waveConfig)
+    {
+        _waveConfig = waveConfig;
+    }
 }
