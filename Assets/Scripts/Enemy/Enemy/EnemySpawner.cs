@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject _root;
     [SerializeField] List<WaveConfig> _waveConfigs;
 
     private WaveConfig _currentWave;
@@ -28,7 +29,10 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < waveConfig.GetEnemyNumber(); i++)
         {
-            Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetWaypoints()[0].transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetWaypoints()[0].transform.position, Quaternion.identity);
+            enemy.transform.parent = _root.transform;
+            enemy.GetComponent<EnemyPath>().SetWaveConfiguration(waveConfig);
+
             yield return new WaitForSeconds(waveConfig.GetSpawnInterval());
         }
     }

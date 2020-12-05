@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyPath : MonoBehaviour
 {
-    [SerializeField] private WaveConfig _waveConfig;
-
+    private WaveConfig _waveConfig;
     private List<Transform> _waypoints;
 
     private float _enemySpeed;
@@ -27,6 +26,11 @@ public class EnemyPath : MonoBehaviour
         EnemyMovement();
     }
 
+    public void SetWaveConfiguration(WaveConfig waveConfig)
+    {
+        _waveConfig = waveConfig;
+    }
+
     private void EnemyMovement()
     {
         if (_waypointIndex <= (_waypoints.Count - 1))
@@ -46,4 +50,5 @@ public class EnemyPath : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
