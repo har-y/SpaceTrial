@@ -467,6 +467,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89c461b5476d5f248acf50e2b4b3f83f, type: 2}
   _root: {fileID: 7978294310234686259}
   _startingWave: 0
+  _loop: 0
 --- !u!1 &1895917859
 GameObject:
   m_ObjectHideFlags: 0
