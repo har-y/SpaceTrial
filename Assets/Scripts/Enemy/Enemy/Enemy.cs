@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float _enemyHealth = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,17 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerBullet playerBullet = collision.gameObject.GetComponent<PlayerBullet>();
+        _enemyHealth -= playerBullet.GetBulletDamage();
+        playerBullet.BulletDestroy();
+
+        if (_enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
