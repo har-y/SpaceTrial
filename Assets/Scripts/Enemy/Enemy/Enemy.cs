@@ -21,8 +21,14 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerBullet playerBullet = collision.gameObject.GetComponent<PlayerBullet>();
-        _enemyHealth -= playerBullet.GetBulletDamage();
         playerBullet.BulletDestroy();
+
+        EnemyDestroy(playerBullet);
+    }
+
+    private void EnemyDestroy(PlayerBullet playerBullet)
+    {
+        _enemyHealth -= playerBullet.GetBulletDamage();
 
         if (_enemyHealth <= 0)
         {
