@@ -54,6 +54,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "player bullet")
         {
             PlayerBullet playerBullet = collision.gameObject.GetComponent<PlayerBullet>();
+
+            if (!playerBullet)
+            {
+                return;
+            }
+
             playerBullet.BulletDestroy();
 
             EnemyDestroy(playerBullet);

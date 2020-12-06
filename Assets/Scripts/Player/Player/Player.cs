@@ -101,6 +101,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "enemy bullet")
         {
             EnemyBullet enemyBullet = collision.gameObject.GetComponent<EnemyBullet>();
+
+            if (!enemyBullet)
+            {
+                return;
+            }
+
             enemyBullet.BulletDestroy();
 
             EnemyDestroy(enemyBullet);
