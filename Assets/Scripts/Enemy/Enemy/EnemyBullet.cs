@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    [Header("Enemy Bullet Configuration")]
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private int _bulletDamage = 50;
 
     private Vector2 _position;
     private Vector2 _min;
@@ -38,5 +40,15 @@ public class EnemyBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public int GetBulletDamage()
+    {
+        return _bulletDamage;
+    }
+
+    public void BulletDestroy()
+    {
+        Destroy(gameObject);
     }
 }

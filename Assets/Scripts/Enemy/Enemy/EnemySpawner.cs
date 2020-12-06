@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Enemy Spawner Configuration")]
     [SerializeField] List<WaveConfig> _waveConfigs;
-    [SerializeField] private GameObject _root;
     [SerializeField] private int _startingWave = 0;
     [SerializeField] private bool _loop = false;
 
     private WaveConfig _currentWave;
 
+    private GameObject _root;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        _root = GameObject.FindGameObjectWithTag("root");
+
         do
         {
             yield return StartCoroutine(SpawnWaves());

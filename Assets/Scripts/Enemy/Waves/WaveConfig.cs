@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Wave Configuration", fileName = "Wave")]
 public class WaveConfig : ScriptableObject
 {
+    [Header("WaveConfig Prefabs")]
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _pathPrefab;
 
+    [Header("WaveConfig Configuration")]
     [SerializeField] private float _spawnInterval = 0.5f;
     [SerializeField] private float _spawnFactor = 0.3f;
     [SerializeField] private float _enemySpeed = 2f;

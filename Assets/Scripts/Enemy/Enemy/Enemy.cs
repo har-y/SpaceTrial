@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject _root;
+    [Header("Enemy Prefabs")]
     [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
 
+    [Header("Enemy Configuration")]
     [SerializeField] private float _enemyHealth = 100f;
     [SerializeField] private float _minShotTime = 2f;
     [SerializeField] private float _maxShotTime = 6f;
+
+    private GameObject _root;
 
     private float _bulletTime;
 
@@ -48,10 +51,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerBullet playerBullet = collision.gameObject.GetComponent<PlayerBullet>();
-        playerBullet.BulletDestroy();
+        if (collision.gameObject.tag == "player bullet")
+        {
+            PlayerBullet playerBullet = collision.gameObject.GetComponent<PlayerBullet>();
+            playerBullet.BulletDestroy();
 
-        EnemyDestroy(playerBullet);
+            EnemyDestroy(playerBullet);
+        }
     }
 
     private void EnemyDestroy(PlayerBullet playerBullet)
