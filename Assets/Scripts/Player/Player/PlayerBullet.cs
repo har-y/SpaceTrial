@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
+    [Header("Player Bullet Configuration")]
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private int _bulletDamage = 100;
 
