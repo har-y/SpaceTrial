@@ -464,7 +464,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e74005a208b013942bf046d06adfd9ad, type: 2}
   _root: {fileID: 7978294310234686259}
   _startingWave: 0
-  _loop: 0
+  _loop: 1
 --- !u!1 &1895917859
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,10 +584,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1410989939295197878, guid: adc8eff9a9a94734f82dd127136f75a1, type: 3}
-      propertyPath: _root
-      value: 
-      objectReference: {fileID: 7978294310234686259}
     - target: {fileID: 6928125899220056352, guid: adc8eff9a9a94734f82dd127136f75a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -649,7 +645,7 @@ GameObject:
   - component: {fileID: 5353855539833379130}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

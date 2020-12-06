@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _root = GameObject.FindGameObjectWithTag("root");
         _playerSpeed = 10f;
         _shootInterval = 0.3f;
     }
