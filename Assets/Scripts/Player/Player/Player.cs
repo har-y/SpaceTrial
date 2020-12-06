@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject _root;
+    [Header("Player Prefabs")]
     [SerializeField] private GameObject _ship;
     [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
 
+    [Header("Player Configuration")]
+    [SerializeField] private float _playerHealth = 500f;
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _shootInterval;
+
+    private GameObject _root;
 
     private Vector2 _playerInput;
     private Vector2 _position;
@@ -90,5 +94,26 @@ public class Player : MonoBehaviour
         _position.y = Mathf.Clamp(_position.y, _min.y, _max.y);
 
         transform.position = _position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy bullet")
+        {
+            EnemyBullet enemyBullet = collision.gameObject.GetComponent<EnemyBullet>();
+            enemyBullet.BulletDestroy();
+
+            EnemyDestroy(enemyBullet);
+        }
+    }
+
+    private void EnemyDestroy(EnemyBullet enemyBullet)
+    {
+        _playerHealth -= enemyBullet.GetBulletDamage();
+
+        if (_playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
