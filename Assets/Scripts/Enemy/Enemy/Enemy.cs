@@ -7,11 +7,13 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
+    [SerializeField] private GameObject _explosionParticle;
 
     [Header("Enemy Configuration")]
     [SerializeField] private float _enemyHealth = 100f;
     [SerializeField] private float _minShotTime = 2f;
     [SerializeField] private float _maxShotTime = 6f;
+    [SerializeField] private float _explosionDelay = 0.75f;
 
     private GameObject _root;
 
@@ -73,6 +75,11 @@ public class Enemy : MonoBehaviour
         if (_enemyHealth <= 0)
         {
             Destroy(gameObject);
+
+            GameObject enemyExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
+            enemyExplosion.transform.parent = _root.transform;
+
+            Destroy(enemyExplosion, _explosionDelay);
         }
     }
 }

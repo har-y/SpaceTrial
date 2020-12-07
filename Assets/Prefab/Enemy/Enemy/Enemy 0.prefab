@@ -147,9 +147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _laserPosition: {fileID: 5928959955894621150}
   _laserPrefab: {fileID: 4852215760404680505, guid: e47d57cef3b6d2040819a018f977f2bc, type: 3}
+  _explosionParticle: {fileID: 7102592988689930128, guid: 83e4084b2f097494f85f8b0604be2e5d, type: 3}
   _enemyHealth: 250
   _minShotTime: 2
   _maxShotTime: 6
+  _deathDelay: 0.75
 --- !u!114 &3371911489109983034
 MonoBehaviour:
   m_ObjectHideFlags: 0
