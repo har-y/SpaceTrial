@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Controller")]
+    [SerializeField] private AudioController _audioController;
+
     [Header("Player Prefabs")]
     [SerializeField] private GameObject _ship;
     [SerializeField] private GameObject _laserPosition;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _audioController.GetComponent<AudioController>();
         _root = GameObject.FindGameObjectWithTag("root");
         _playerSpeed = 10f;
         _shootInterval = 0.3f;
@@ -59,6 +63,8 @@ public class Player : MonoBehaviour
         GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
         laser.transform.position = _laserPosition.transform.position;
         laser.transform.parent = _root.transform;
+
+        _audioController.PlaySound(_audioController._playerShootSFX);
     }
 
     private void PlayerShoot()
@@ -109,17 +115,18 @@ public class Player : MonoBehaviour
 
             enemyBullet.BulletDestroy();
 
-            EnemyDestroy(enemyBullet);
+            PlayerDestroy(enemyBullet);
         }
     }
 
-    private void EnemyDestroy(EnemyBullet enemyBullet)
+    private void PlayerDestroy(EnemyBullet enemyBullet)
     {
         _playerHealth -= enemyBullet.GetBulletDamage();
 
         if (_playerHealth <= 0)
         {
             Destroy(gameObject);
+            _audioController.PlaySound(_audioController._explosionSFX);
         }
     }
 }

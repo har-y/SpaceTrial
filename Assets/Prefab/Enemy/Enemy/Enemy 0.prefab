@@ -145,13 +145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6591a69925d74f94cb0140885353babd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioController: {fileID: 8149811496176843223, guid: 75e558b91e4754f4c982461a046d4574, type: 3}
   _laserPosition: {fileID: 5928959955894621150}
   _laserPrefab: {fileID: 4852215760404680505, guid: e47d57cef3b6d2040819a018f977f2bc, type: 3}
   _explosionParticle: {fileID: 7102592988689930128, guid: 83e4084b2f097494f85f8b0604be2e5d, type: 3}
   _enemyHealth: 250
   _minShotTime: 2
   _maxShotTime: 6
-  _deathDelay: 0.75
+  _explosionDelay: 0.75
 --- !u!114 &3371911489109983034
 MonoBehaviour:
   m_ObjectHideFlags: 0

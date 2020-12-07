@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Controller")]
+    [SerializeField] private AudioController _audioController;
+
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
@@ -22,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _audioController.GetComponent<AudioController>();
         _root = GameObject.FindGameObjectWithTag("root");
         _bulletTime = Random.Range(_minShotTime, _maxShotTime);
     }
@@ -49,6 +53,8 @@ public class Enemy : MonoBehaviour
         GameObject laser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
         laser.transform.position = _laserPosition.transform.position;
         laser.transform.parent = _root.transform;
+
+        _audioController.PlaySound(_audioController._enemyShootSFX);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +84,8 @@ public class Enemy : MonoBehaviour
 
             GameObject enemyExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             enemyExplosion.transform.parent = _root.transform;
+
+            _audioController.PlaySound(_audioController._explosionSFX);
 
             Destroy(enemyExplosion, _explosionDelay);
         }
