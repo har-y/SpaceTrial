@@ -196,6 +196,8 @@ MonoBehaviour:
   _ship: {fileID: 6928125897505311246}
   _laserPosition: {fileID: 923705450756950243}
   _laserPrefab: {fileID: 7852880394251549003, guid: 52430a57d90814a4a89719c260aeadcb, type: 3}
+  _explosionParticle: {fileID: 7102592988689930128, guid: 83e4084b2f097494f85f8b0604be2e5d, type: 3}
   _playerHealth: 500
   _playerSpeed: 10
   _shootInterval: 0.3
+  _explosionDelay: 0.75

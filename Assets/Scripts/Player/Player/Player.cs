@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _ship;
     [SerializeField] private GameObject _laserPosition;
     [SerializeField] private GameObject _laserPrefab;
+    [SerializeField] private GameObject _explosionParticle;
 
     [Header("Player Configuration")]
     [SerializeField] private float _playerHealth = 500f;
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _shootInterval;
+    [SerializeField] private float _explosionDelay = 0.75f;
 
     private GameObject _root;
 
@@ -29,7 +31,6 @@ public class Player : MonoBehaviour
     private float _marginX;
     private float _marginY;
     private float _nextShootInterval;
-
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,6 @@ public class Player : MonoBehaviour
         PlayerMovement();
         PlayerShoot();
     }
-
 
     private void PlayerMovement()
     {
@@ -117,6 +117,28 @@ public class Player : MonoBehaviour
 
             PlayerDestroy(enemyBullet);
         }
+
+        if (collision.gameObject.tag == "enemy")
+        {
+            PlayerDestroy();
+        }
+    }
+
+    private void PlayerDestroy()
+    {
+        _playerHealth = 0;
+
+        if (_playerHealth <= 0)
+        {
+            Destroy(gameObject);
+
+            GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
+            playerExplosion.transform.parent = _root.transform;
+
+            _audioController.PlaySound(_audioController._explosionSFX);
+
+            FindObjectOfType<GameController>().LoadOver();
+        }
     }
 
     private void PlayerDestroy(EnemyBullet enemyBullet)
@@ -126,7 +148,13 @@ public class Player : MonoBehaviour
         if (_playerHealth <= 0)
         {
             Destroy(gameObject);
+
+            GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
+            playerExplosion.transform.parent = _root.transform;
+
             _audioController.PlaySound(_audioController._explosionSFX);
+
+            FindObjectOfType<GameController>().LoadOver();
         }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private float _delay = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +31,17 @@ public class GameController : MonoBehaviour
 
     public void LoadOver()
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(WaitSeconds());
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    IEnumerator WaitSeconds()
+    {
+        yield return new WaitForSeconds(_delay);
+        SceneManager.LoadScene(2);
     }
 }
