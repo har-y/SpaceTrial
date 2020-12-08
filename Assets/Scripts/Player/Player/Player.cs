@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             playerExplosion.transform.parent = _root.transform;
 
-            _audioController.PlaySound(_audioController._explosionSFX);
+            _audioController.PlaySound(_audioController._playerExplosionSFX);
 
             FindObjectOfType<GameController>().LoadOver();
         }
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             playerExplosion.transform.parent = _root.transform;
 
-            _audioController.PlaySound(_audioController._explosionSFX);
+            _audioController.PlaySound(_audioController._playerExplosionSFX);
 
             FindObjectOfType<GameController>().LoadOver();
         }

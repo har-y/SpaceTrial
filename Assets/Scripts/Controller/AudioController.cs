@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    [Range(0f, 1f)] public float musicVolume = 0.5f;
-    [Range(0f, 1f)] public float fxVolume = 0.5f;
+    [Header("Controller")]
+    [Range(0f, 1f)] public float musicVolume = 0.05f;
+    [Range(0f, 1f)] public float fxVolume = 0.1f;
 
+    [Header("Audio Controller Prefabs")]
     public AudioClip _playerShootSFX;
+    public AudioClip _playerExplosionSFX;
     public AudioClip _enemyShootSFX;
-    public AudioClip _explosionSFX;
+    public AudioClip _enemyExplosionSFX;
+    public AudioClip _backgroudMusicSFX;
 
     public bool musicEnabled = true;
     public bool fxEnabled = true;
@@ -20,7 +24,7 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         _musicSource = GetComponent<AudioSource>();
-        //PlayBackgroundMusic(backgroundMusic);
+        PlayBackgroundMusic(_backgroudMusicSFX);
     }
 
     // Update is called once per frame
@@ -49,7 +53,7 @@ public class AudioController : MonoBehaviour
         {
             if (musicEnabled)
             {
-                //PlayBackgroundMusic(backgroundMusic);
+                PlayBackgroundMusic(_backgroudMusicSFX);
             }
             else
             {

@@ -140,10 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99038a18058db34a893603ffbe3e14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolume: 0.75
-  fxVolume: 0.75
+  musicVolume: 0.05
+  fxVolume: 0.1
   _playerShootSFX: {fileID: 8300000, guid: 93090752ecf31b944a918cb35677f11a, type: 3}
+  _playerExplosionSFX: {fileID: 8300000, guid: 258fdaed86e25294882c8422608da8b2, type: 3}
   _enemyShootSFX: {fileID: 8300000, guid: 0a9f61c7e5b1a48409a916c73d0f21f0, type: 3}
-  _explosionSFX: {fileID: 8300000, guid: 76946694c98448941b44fbb5aa954090, type: 3}
+  _enemyExplosionSFX: {fileID: 8300000, guid: 76946694c98448941b44fbb5aa954090, type: 3}
+  _backgroudMusicSFX: {fileID: 8300000, guid: 690b08d81533eb44088ac00ab97377af, type: 3}
   musicEnabled: 1
   fxEnabled: 1

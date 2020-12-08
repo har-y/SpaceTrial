@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
             GameObject enemyExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
             enemyExplosion.transform.parent = _root.transform;
 
-            _audioController.PlaySound(_audioController._explosionSFX);
+            _audioController.PlaySound(_audioController._enemyExplosionSFX);
 
             Destroy(enemyExplosion, _explosionDelay);
         }
