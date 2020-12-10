@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _root = GameObject.FindGameObjectWithTag("root");
+
         _bulletTime = Random.Range(_minShotTime, _maxShotTime);
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _explosionParticle;
 
     [Header("Player Configuration")]
-    [SerializeField] private float _playerHealth = 500f;
+    [SerializeField] private float _playerHealth = 200f;
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _shootInterval;
     [SerializeField] private float _explosionDelay = 0.75f;
+
+    private Text _playerHealthText;
 
     private GameObject _root;
 
@@ -35,7 +38,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _playerHealthText = GameObject.FindGameObjectWithTag("health text").GetComponent<Text>();
         _root = GameObject.FindGameObjectWithTag("root");
+
         _playerSpeed = 10f;
         _shootInterval = 0.3f;
     }
@@ -45,6 +50,7 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         PlayerShoot();
+        PlayerHealth();
     }
 
     private void PlayerMovement()
@@ -155,5 +161,10 @@ public class Player : MonoBehaviour
 
             FindObjectOfType<GameController>().LoadOver();
         }
+    }
+
+    private void PlayerHealth()
+    {
+        _playerHealthText.text = _playerHealth.ToString();
     }
 }

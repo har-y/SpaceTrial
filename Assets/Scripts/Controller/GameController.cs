@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     public void LoadGame()
     {
         _scoreController.ResetScore();
+
         SceneManager.LoadScene(1);
     }
 

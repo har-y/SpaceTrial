@@ -24,6 +24,7 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         _musicSource = GetComponent<AudioSource>();
+
         PlayBackgroundMusic(_backgroudMusicSFX);
     }
 
