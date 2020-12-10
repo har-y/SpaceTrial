@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [Header("Controller")]
     [SerializeField] private AudioController _audioController;
+    [SerializeField] private ScoreController _scoreController;
+
 
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject _laserPosition;
@@ -17,6 +19,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _minShotTime = 2f;
     [SerializeField] private float _maxShotTime = 6f;
     [SerializeField] private float _explosionDelay = 0.75f;
+    [SerializeField] private int _enemyPoints = 50;
+
 
     private GameObject _root;
 
@@ -25,7 +29,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioController.GetComponent<AudioController>();
         _root = GameObject.FindGameObjectWithTag("root");
         _bulletTime = Random.Range(_minShotTime, _maxShotTime);
     }
@@ -80,6 +83,8 @@ public class Enemy : MonoBehaviour
 
         if (_enemyHealth <= 0)
         {
+            _scoreController.AddScorePoints(_enemyPoints);
+
             Destroy(gameObject);
 
             GameObject enemyExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);

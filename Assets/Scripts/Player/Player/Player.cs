@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Controller")]
     [SerializeField] private AudioController _audioController;
+    [SerializeField] private ScoreController _scoreController;
 
     [Header("Player Prefabs")]
     [SerializeField] private GameObject _ship;
@@ -35,7 +36,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioController.GetComponent<AudioController>();
         _root = GameObject.FindGameObjectWithTag("root");
         _playerSpeed = 10f;
         _shootInterval = 0.3f;
@@ -130,6 +130,8 @@ public class Player : MonoBehaviour
 
         if (_playerHealth <= 0)
         {
+            _scoreController.ResetScore();
+
             Destroy(gameObject);
 
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
@@ -147,6 +149,8 @@ public class Player : MonoBehaviour
 
         if (_playerHealth <= 0)
         {
+            _scoreController.ResetScore();
+
             Destroy(gameObject);
 
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);

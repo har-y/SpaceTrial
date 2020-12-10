@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioController: {fileID: 8149811496176843223, guid: 75e558b91e4754f4c982461a046d4574, type: 3}
+  _scoreController: {fileID: 6999160375912983021, guid: 31a89d9711a891d4c8255883c0e2ecfa, type: 3}
   _ship: {fileID: 6928125897505311246}
   _laserPosition: {fileID: 923705450756950243}
   _laserPrefab: {fileID: 7852880394251549003, guid: 52430a57d90814a4a89719c260aeadcb, type: 3}
