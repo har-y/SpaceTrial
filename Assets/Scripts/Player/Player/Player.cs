@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     [Header("Controller")]
     [SerializeField] private AudioController _audioController;
-    [SerializeField] private ScoreController _scoreController;
 
     [Header("Player Prefabs")]
     [SerializeField] private GameObject _ship;
@@ -130,8 +129,6 @@ public class Player : MonoBehaviour
 
         if (_playerHealth <= 0)
         {
-            _scoreController.ResetScore();
-
             Destroy(gameObject);
 
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);
@@ -149,8 +146,6 @@ public class Player : MonoBehaviour
 
         if (_playerHealth <= 0)
         {
-            _scoreController.ResetScore();
-
             Destroy(gameObject);
 
             GameObject playerExplosion = Instantiate(_explosionParticle, transform.position, Quaternion.identity);

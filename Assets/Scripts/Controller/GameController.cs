@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private ScoreController _scoreController;
     [SerializeField] private float _delay = 2f;
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour
 
     public void LoadGame()
     {
+        _scoreController.ResetScore();
         SceneManager.LoadScene(1);
     }
 

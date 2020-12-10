@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e72c69a34845e84fb1371877cf619b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreController: {fileID: 6999160375912983021, guid: 31a89d9711a891d4c8255883c0e2ecfa, type: 3}
   _delay: 2
