@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
         _playerSpeed = 10f;
         _shootInterval = 0.3f;
+
+        PlayerHealth();
     }
 
     // Update is called once per frame
@@ -50,7 +52,6 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         PlayerShoot();
-        PlayerHealth();
     }
 
     private void PlayerMovement()
@@ -133,6 +134,8 @@ public class Player : MonoBehaviour
     {
         _playerHealth = 0;
 
+        PlayerHealth();
+
         if (_playerHealth <= 0)
         {
             Destroy(gameObject);
@@ -149,6 +152,8 @@ public class Player : MonoBehaviour
     private void PlayerDestroy(EnemyBullet enemyBullet)
     {
         _playerHealth -= enemyBullet.GetBulletDamage();
+
+        PlayerHealth();
 
         if (_playerHealth <= 0)
         {
